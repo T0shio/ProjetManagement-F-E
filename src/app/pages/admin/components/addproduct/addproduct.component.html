@@ -1,0 +1,64 @@
+<h4>Voici l'écran pour ajouter vos produits.</h4>
+
+
+<div class="main-addproduct-container">
+  <div class="form-product">
+    <form [formGroup]="fg" (ngSubmit)="addProduct()">
+      <ng-container formGroupName="product">
+        <mat-form-field>
+          <mat-label>Nom du produit :</mat-label>
+          <input formControlName="name" matInput placeholder="Nom du produit">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Description :</mat-label>
+          <input formControlName="description" matInput placeholder="Description du produit">
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <mat-label>Marque :</mat-label>
+          <input formControlName="brand" matInput placeholder="Marque du produit">
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <mat-label>Prix :</mat-label>
+          <input type="number" formControlName="price" matInput placeholder="Prix du produit">
+        </mat-form-field>
+
+      </ng-container>
+      <mat-form-field>
+        <mat-label>Quantité :</mat-label>
+        <input type="number" formControlName="quantity" matInput placeholder="Quantité à ajouter">
+      </mat-form-field>
+
+      <button mat-raised-button type="submit" [disabled]="fg.invalid">Valider</button>
+    </form>
+  </div>
+  <div class="provider">
+
+    <form [formGroup]="fgPro" (submit)="submitForm()">
+
+      <mat-form-field>
+        <mat-label>Provider</mat-label>
+        <mat-select formControlName="selectedProvider" (valueChange)="selectProviderToUpdate($event)">
+          <mat-option *ngFor="let p of providers" [value]="p.name">
+            {{p.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="newProvider || updateProvider">
+        <mat-label>Fournisseur</mat-label>
+        <input formControlName="name" type="text" matInput>
+      </mat-form-field>
+
+      <button type="button" mat-raised-button (click)="initNewProvider()">Créer un nouveau fournisseur</button>
+      <button *ngIf="newProvider" mat-raised-button type="submit" [disabled]="fgPro.invalid">Sauver un nouveau fournisseur</button>
+      <button *ngIf="updateProvider" mat-raised-button type="submit" [disabled]="fgPro.invalid">Update le fournisseur</button>
+
+    </form>
+
+  </div>
+</div>

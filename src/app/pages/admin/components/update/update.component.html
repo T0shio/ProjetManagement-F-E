@@ -1,0 +1,28 @@
+<div class="main-update-container">
+  <div class="form-product">
+    <form [formGroup]="fg" (ngSubmit)="updateStock()">
+        <ng-container formGroupName="product">
+          <mat-form-field>
+            <mat-label>Nom du produit :</mat-label>
+            <input formControlName="name" matInput placeholder="Nom du produit">
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <mat-label>Marque :</mat-label>
+            <input formControlName="brand" matInput placeholder="Marque du produit">
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <mat-label>Prix :</mat-label>
+            <input type="number" formControlName="price" matInput placeholder="Prix du produit">
+          </mat-form-field>
+
+        </ng-container>
+        <mat-form-field>
+          <mat-label>Quantité :</mat-label>
+          <input type="number" formControlName="quantity" matInput placeholder="Quantité à ajouter">
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" [disabled]="fg.invalid">Valider</button>

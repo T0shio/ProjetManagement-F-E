@@ -1,0 +1,8 @@
+<p>stock works!</p>
+<div *ngIf="stock">
+  <ul>
+    <li *ngFor="let a of stock">
+      {{a.product.name}} - {{a.quantity}}
+    </li>
+  </ul>
+</div>

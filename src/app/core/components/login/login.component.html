@@ -1,0 +1,24 @@
+<!-- <p>
+    Login : <input type="text" [(ngModel)]="username">
+  </p>
+  <p>
+    Password : <input type="password" [(ngModel)]="pwd">
+  </p>
+   -->
+
+  <div class="login-container">
+    <form [formGroup]="fg">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your login</mat-label>
+        <input matInput formControlName="login">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput formControlName="pwd" [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <button (click)="login()">Se connecter</button>
+    </form>
+    </div>
